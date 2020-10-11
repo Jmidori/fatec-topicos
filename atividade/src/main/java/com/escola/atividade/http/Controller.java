@@ -1,15 +1,21 @@
 package com.escola.atividade.http;
 
 import com.escola.atividade.http.data.AtividadeRequest;
+import com.escola.atividade.service.IAtividade;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/atividade")
+@RestController
+@RequestMapping("/atividade")
 public class Controller {
-    private final AtividadeService service;
+
+    @Autowired
+    private IAtividade service;
 
     @PostMapping("/envio")
     public ResponseEntity<Object> enviaAtividade(AtividadeRequest request){
@@ -22,9 +28,9 @@ public class Controller {
         }
     }
 
-    @GetMapping("/healthcheck")
-    public ResponseEntity<HealthCheckResponse> obterHealthCheck(){
-        HealthCheckResponse status = service.checkApplicationHealth();
-        return new ResponseEntity<HealthCheckResponse>(status,HttpStatus.OK);
-    }
+//    @GetMapping("/healthcheck")
+//    public ResponseEntity<HealthCheckResponse> obterHealthCheck(){
+//        HealthCheckResponse status = service.checkApplicationHealth();
+//        return new ResponseEntity<HealthCheckResponse>(status,HttpStatus.OK);
+//    }
 }
