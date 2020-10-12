@@ -2,8 +2,6 @@ package com.escola.atividade.http.data;
 
 import com.escola.atividade.entidade.Atividade;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class AtividadeRequest {
@@ -13,4 +11,35 @@ public class AtividadeRequest {
     @JsonProperty("atividade")
     private String codigoAtividade;
     private Atividade conteudo;
+
+    public String getRa() {
+        return ra;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
+
+    public String getCodigoAtividade() {
+        return codigoAtividade;
+    }
+
+    public Atividade getConteudo() {
+        return conteudo;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "ra='" + ra + '\'' +
+                ", nome='" + nome + '\'' +
+                ", dataHora=" + dataHora +
+                ", atividade='" + codigoAtividade + '\'' +
+                ", conteudo=" + conteudo +
+                '}';
+    }
+}

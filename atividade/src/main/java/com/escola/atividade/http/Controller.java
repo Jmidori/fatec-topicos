@@ -1,11 +1,10 @@
 package com.escola.atividade.http;
 
 import com.escola.atividade.http.data.AtividadeRequest;
-import com.escola.atividade.service.IAtividade;
+import com.escola.atividade.servico.JMSClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     @Autowired
-    private IAtividade service;
+    JMSClient client;
 
     @PostMapping("/envio")
     public ResponseEntity<Object> enviaAtividade(AtividadeRequest request){
         try{
-            service.enviaFila(request);
+            client.envia(request);
             return new ResponseEntity<>(HttpStatus.CREATED);
 
         } catch (RuntimeException e){
