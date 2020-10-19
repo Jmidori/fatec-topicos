@@ -1,20 +1,11 @@
-package com.escola.atividade.entidade;
+package com.escola.avaliacao.entidade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.io.Serializable;
-
-public class Atividade implements Serializable {
-//    @JsonProperty
-//    private List<String> questoes;
-
-    @JsonProperty
+public class Conteudo {
     private String questao1;
-    @JsonProperty
     private String questao2;
-    @JsonProperty
     private String questao3;
-
 
     public String getQuestao1() {
         return questao1;
@@ -38,14 +29,5 @@ public class Atividade implements Serializable {
 
     public void setQuestao3(String questao3) {
         this.questao3 = questao3;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-                "\"questao1\":\"" + questao1 + '\"' +
-                ",\"questao2\":\"" + questao2 + '\"' +
-                ",\"questao3\":\"" + questao3 + '\"' +
-                '}';
     }
 }

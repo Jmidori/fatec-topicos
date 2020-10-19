@@ -9,10 +9,8 @@ import org.springframework.jms.core.JmsTemplate;
 public class AtividadeApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(AtividadeApplication.class, args);
+		SpringApplication.run(AtividadeApplication.class, args);
 
-		JmsTemplate jms = ctx.getBean(JmsTemplate.class);
-		jms.convertAndSend("");
 	}
 
 

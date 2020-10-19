@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,19 +18,13 @@ public class Controller {
     JMSClient client;
 
     @PostMapping("/envio")
-    public ResponseEntity<Object> enviaAtividade(AtividadeRequest request){
+    public ResponseEntity<Object> enviaAtividade(@RequestBody AtividadeRequest request){
         try{
-            client.envia(request);
+            client.envia(request.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
 
         } catch (RuntimeException e){
             return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
         }
     }
-
-//    @GetMapping("/healthcheck")
-//    public ResponseEntity<HealthCheckResponse> obterHealthCheck(){
-//        HealthCheckResponse status = service.checkApplicationHealth();
-//        return new ResponseEntity<HealthCheckResponse>(status,HttpStatus.OK);
-//    }
 }
