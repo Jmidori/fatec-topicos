@@ -2,10 +2,12 @@ package com.escola.avaliacao.servico;
 
 import com.escola.avaliacao.entidade.Atividade;
 import com.escola.avaliacao.entidade.Resultado;
+import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 import java.util.Random;
 
+@Component
 public class AnaliseService {
     public boolean validaAtividade(Atividade atividade){
         //todo: implementado qqr coisa apenas para avancar na esteira

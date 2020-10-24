@@ -34,4 +34,14 @@ public class Resultado {
     public Double getNota() {
         return nota;
     }
+
+    @Override
+    public String toString() {
+        return  "{" +
+                "\"ra\":\"" + ra + '\"' +
+                ",\"nome\":\"" + nome + '\"' +
+                ",\"disciplina\":\"" + disciplina + '\"' +
+                ",\"codigoAtividade\":\"" + codigoAtividade + '\"' +
+                ",\"nota\":\"" + nota +"\"}";
+    }
 }

@@ -7,6 +7,13 @@ public class Conteudo {
     private String questao2;
     private String questao3;
 
+    public Conteudo(){}
+    public Conteudo(String questao1, String questao2, String questao3) {
+        this.questao1 = questao1;
+        this.questao2 = questao2;
+        this.questao3 = questao3;
+    }
+
     public String getQuestao1() {
         return questao1;
     }
@@ -29,5 +36,14 @@ public class Conteudo {
 
     public void setQuestao3(String questao3) {
         this.questao3 = questao3;
+    }
+
+    @Override
+    public String toString() {
+        return "Conteudo{" +
+                "questao1='" + questao1 + '\'' +
+                ", questao2='" + questao2 + '\'' +
+                ", questao3='" + questao3 + '\'' +
+                '}';
     }
 }
