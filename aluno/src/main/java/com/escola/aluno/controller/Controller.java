@@ -1,4 +1,4 @@
-package com.escola.aluno.http;
+package com.escola.aluno.controller;
 
 import com.escola.aluno.entidade.Avaliacao;
 import com.escola.aluno.repositorio.IAvaliacaoRepository;
