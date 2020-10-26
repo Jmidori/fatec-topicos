@@ -5,9 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 public class Atividade implements Serializable {
-//    @JsonProperty
-//    private List<String> questoes;
-
     @JsonProperty
     private String questao1;
     @JsonProperty

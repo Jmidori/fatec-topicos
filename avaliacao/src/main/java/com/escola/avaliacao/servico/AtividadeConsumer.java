@@ -2,10 +2,13 @@ package com.escola.avaliacao.servico;
 
 import com.escola.avaliacao.entidade.Atividade;
 import com.escola.avaliacao.entidade.Resultado;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
+import javax.jms.JMSException;
 import java.util.Random;
 
 @Component
@@ -13,23 +16,25 @@ public class AtividadeConsumer {
     @Autowired
     ResultadoProducer producer;
 
-    @JmsListener(destination = "${jms.queue}", containerFactory = "consumerFactory")
-    public void recebeMessagem(Atividade atividade){
-        System.out.println("-- Atividade: " + atividade.toString());
+    @JmsListener(destination = "${destination.atividade-avaliativa-queue}")
+    public void recebeMessagem(String msg) throws JMSException, JsonProcessingException {
+        System.out.println("<- Recebendo a atividade: " + msg);
 
-//        producer.enfileiraTopico(this.getResultado(atividade));
+        ObjectMapper mapper = new ObjectMapper();
+        Atividade atividade = mapper.readValue(msg, Atividade.class);
         Resultado resultado = this.getResultado(atividade);
-        producer.enfileiraTopico(resultado);
-        System.out.println("-- Resultado: " + resultado);
+        producer.enfileiraTopico(resultado.toString());
     }
 
     public Resultado getResultado(Atividade atividade) {
         Random random = new Random();
 
-        return new Resultado(atividade.getNome(),
-                    atividade.getRa(),
+        Resultado resultado =  new Resultado(atividade.getRa(),
+                    atividade.getNome(),
                     atividade.getDisciplina(),
-                    atividade.getAtividade(),
-                    Double.parseDouble(String.format("%.2f",random.nextDouble()*10)));
+                    atividade.getCodigoAtividade(),
+                    String.format("%.2f", 0 + (10 - 0) * random.nextDouble()));
+
+        return resultado;
     }
 }

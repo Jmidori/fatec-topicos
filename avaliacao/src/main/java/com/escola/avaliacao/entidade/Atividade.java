@@ -1,11 +1,13 @@
 package com.escola.avaliacao.entidade;
 
-public class Atividade {
+import java.io.Serializable;
+
+public class Atividade implements Serializable {
     private String ra;
     private String nome;
     private String dataHora;
     private String disciplina;
-    private String atividade;
+    private String codigoAtividade;
     private Conteudo conteudo;
 
     public Atividade() {}
@@ -15,7 +17,7 @@ public class Atividade {
         this.nome = nome;
         this.dataHora = dataHora;
         this.disciplina = disciplina;
-        this.atividade = atividade;
+        this.codigoAtividade = atividade;
         this.conteudo = conteudo;
     }
 
@@ -51,12 +53,12 @@ public class Atividade {
         this.disciplina = disciplina;
     }
 
-    public String getAtividade() {
-        return atividade;
+    public String getCodigoAtividade() {
+        return codigoAtividade;
     }
 
-    public void setAtividade(String atividade) {
-        this.atividade = atividade;
+    public void setCodigoAtividade(String codigoAtividade) {
+        this.codigoAtividade = codigoAtividade;
     }
 
     public Conteudo getConteudo() {
@@ -74,7 +76,7 @@ public class Atividade {
                 ", nome='" + nome + '\'' +
                 ", dataHora='" + dataHora + '\'' +
                 ", disciplina='" + disciplina + '\'' +
-                ", atividade='" + atividade + '\'' +
+                ", codigoAtividade='" + codigoAtividade + '\'' +
                 ", conteudo=" + conteudo +
                 '}';
     }

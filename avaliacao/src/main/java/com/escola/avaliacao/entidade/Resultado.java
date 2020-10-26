@@ -5,9 +5,10 @@ public class Resultado {
     private String nome;
     private String disciplina;
     private String codigoAtividade;
-    private Double nota;
+    private String nota;
 
-    public Resultado(String ra, String nome, String disciplina, String codigoAtividade, Double nota) {
+    public Resultado(){}
+    public Resultado(String ra, String nome, String disciplina, String codigoAtividade, String nota) {
         this.ra = ra;
         this.nome = nome;
         this.disciplina = disciplina;
@@ -31,7 +32,7 @@ public class Resultado {
         return codigoAtividade;
     }
 
-    public Double getNota() {
+    public String getNota() {
         return nota;
     }
 
@@ -44,4 +45,5 @@ public class Resultado {
                 ",\"codigoAtividade\":\"" + codigoAtividade + '\"' +
                 ",\"nota\":\"" + nota +"\"}";
     }
+
 }
